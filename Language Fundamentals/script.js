@@ -218,33 +218,160 @@
 // console.log(discountAmount(0.2));
 
 // Iterables and Iterators
-let arr = [4, 5, 6, 7];
-let itr = arr[Symbol.iterator]();
-console.log(itr);
-console.log(itr.next());
-console.log(itr.next());
-console.log(itr.next());
-console.log(itr.next());
-console.log(itr.next());
+// let arr = [4, 5, 6, 7];
+// let itr = arr[Symbol.iterator]();
+// console.log(itr);
+// console.log(itr.next());
+// console.log(itr.next());
+// console.log(itr.next());
+// console.log(itr.next());
+// console.log(itr.next());
 // for (let i of arr) {
 //   console.log(i);
 // }
-let obj = {
-  start: 10,
-  end: 15,
-};
-obj[Symbol.iterator] = function () {
-  const itr = {
-    next() {
-      if (obj.start <= obj.end) {
-        return { value: obj.start++, done: false };
-      } else {
-        return { done: true };
-      }
-    },
+// let obj = {
+//   start: 10,
+//   end: 15,
+//   [Symbol.iterator]() {
+//     return this;
+//   },
+//   next() {
+//     if (obj.start <= obj.end) {
+//       return { value: obj.start++, done: false };
+//     } else {
+//       return { done: true };
+//     }
+//   },
+// };
+// for (let i of obj) {
+//   console.log(i);
+// }
+// let obj = {
+//   start: 10,
+//   end: 15,
+//   *[Symbol.iterator]() {
+//     for (let cnt = this.start; cnt <= this.end; cnt++) {
+//       yield cnt;
+//     }
+//   },
+// };
+// for (let i of obj) {
+//   console.log(i);
+// }
+// console.log([...obj]);
+// const genFunction = function* () {
+//   console.log("Hello");
+//   yield "YieldValue";
+//   console.log("World");
+//   yield;
+//   console.log("And Galaxy");
+// };
+// const gObj = [...genFunction()];
+// console.log(gObj);
+// const o = gObj.next();
+// console.log(o);
+// console.log(gObj.next());
+// console.log(gObj.next());
+// console.log(gObj.next());
+// for (let o of gObj) {
+//   console.log(o);
+// }
+// console.log(gObj);
+
+// function* gen() {
+//   console.log("Hi");
+// }
+// function* gen1() {
+//   const g = gen();
+//   g.next();
+// }
+// function* gen1() {
+//   yield* gen();
+// }
+// const g1 = gen1();
+// g1.next();
+// function* fact() {
+//   // if
+//   // exit
+//   yield* fact();
+// }
+// function* gen() {
+//   yield "One";
+//   yield "Two";
+// }
+// const gObj = gen();
+// console.log(gObj.next());
+// console.log(gObj.return("Condition done..."));
+// console.log(gObj.next());
+
+// Types of function ->
+// function Statement
+// define
+// function sayHello(param) {
+//   console.log("hello", param);
+//   return "sttrfbj";
+// }
+// fn invocation
+// sayHello(10);
+// console.log(",,,,,,,,,,,,,,,,,,,,");
+// sayHello("Hello");
+// console.log(",,,,,,,,,,,,,,,,,,,,");
+// sayHello([1, 2, 3, 4, 5]);
+// console.log(",,,,,,,,,,,,,,,,,,,,");
+// sayHello({ name: "Jasbir" });
+// console.log(",,,,,,,,,,,,,,,,,,,,");
+// let rVal = sayHello();
+// console.log("rVal", rVal);
+// function are first class citizens
+// function are treated as a variable
+// assignment
+// let a = [1, 2, 3, 4, 5];
+// let b = a;
+// console.log(b);
+// function expression
+// let fnContainer = function fn() {
+//   console.log("I am Expression");
+//   console.log("I am a anonymous function");
+// };
+// fnContainer();
+// IIFE -> Immediately Invoked Function Expression
+// /require, pollution,
+// (function fn() {
+//   console.log("I am IIFE");
+//   console.log("I will run on my own");
+// })();
+// Arrow Function -> syntax, react, this
+// let fun = (num) => num * num;
+// console.log(fun(5));
+// // First Class Citizens
+// functions are treated as a variable
+// 1. assignment -> fn expression
+// variables can be passed as a parameter
+// 2. functions can be passed as a parameter -> fp, hof, callbacks
+// variables can be return from a function
+// 3. function can be returned from a function -> closure
+
+// function sayHello(param) {
+//   console.log("hello", param);
+//   param();
+//   return "sttrfbj";
+// }
+// // address
+// function smaller() {
+//   console.log("Hello i am a smaller");
+// }
+
+// // sayHello([1, 2, 3, 4, 5]);
+// let rVal = sayHello(smaller);
+// console.log(rVal);
+// Closure
+function outer() {
+  console.log("I am outer returning inner");
+  return function () {
+    console.log("I am inner");
   };
-  return itr;
-};
-for (let i of obj) {
-  console.log(i);
 }
+
+let rVal = outer();
+console.log("Reval", rVal);
+rVal();
