@@ -351,15 +351,15 @@
 // variables can be return from a function
 // 3. function can be returned from a function -> closure
 
-// function sayHello(param) {
-//   console.log("hello", param);
-//   param();
-//   return "sttrfbj";
-// }
-// // address
-// function smaller() {
-//   console.log("Hello i am a smaller");
-// }
+function sayHello(param) {
+  console.log("hello", param);
+  param();
+  return "sttrfbj";
+}
+// address
+function smaller() {
+  console.log("Hello i am a smaller");
+}
 
 // // sayHello([1, 2, 3, 4, 5]);
 // let rVal = sayHello(smaller);
